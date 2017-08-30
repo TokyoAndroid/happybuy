@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="guide_subject">
+        <item >美食</item>
+        <item >电影</item>
+        <item >酒店</item>
+        <item >休闲</item>
+        <item >购物</item>
+        <item >KTV</item>
+        <item >旅游</item>
+        <item >丽人</item>
+    </array>
+
+    <array name="tab_title">
+        <item>首页</item>
+        <item>周边</item>
+        <item>我的</item>
+        <item>更多</item>
+    </array>
+</resources>

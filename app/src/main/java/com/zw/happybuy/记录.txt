@@ -1,0 +1,4 @@
+8/27
+1、完成了基本的网络封装、框架搭建，各种工具包
+2、SplashActivity完成大半，GuideActivity完成。
+待补充：SplashActivity缺 下载 和 版本检查 代码。

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="10dp"
+    app:cardElevation="3dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="5dp"
+            android:scaleType="centerCrop"
+            android:id="@+id/iv_goods"
+            android:src="@mipmap/ceshi"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_goods_title"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:maxLines="1"
+                android:textColor="@color/colorPrimary"
+                android:text="小龙哥冒菜"/>
+            <TextView
+                android:id="@+id/tv_goods_dec"
+                android:lines="2"
+                android:ellipsize="end"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/light_gray"
+                android:text="小龙哥冒菜小龙哥冒冒菜小龙哥冒菜小"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_real_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="78"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary"
+                    />
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/tv_real_price"
+                    android:id="@+id/tv_orl_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="101.2"
+                    android:textSize="12sp"
+                    android:textColor="@color/light_gray"
+                    />
+                <ImageView
+                    android:id="@+id/iv_location"
+                    android:layout_marginRight="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@mipmap/home_goods_item_location"/>
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/iv_location"
+                    android:id="@+id/tv_sales"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="5dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/light_gray"
+                    android:text="已售9份"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</android.support.v7.widget.CardView>

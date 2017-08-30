@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">乐购</string>
+
+    <string name="author_email">vicwudi@126.com</string>
+    <string name="isUpdateApp_title">新版本更新</string>
+    <string name="isUpdateApp_message">有新版本发现，且当前环境为WIFI环境，要更新吗？</string>
+    <string name="sure">确定</string>
+    <string name="cancel">取消</string>
+
+    <string name="click_in">点击进入</string>
+    <string name="quary_hint">请输入商品名、品类或商铺</string>
+    <string name="reload">重新加载</string>
+    <string name="failed_load">加载失败！</string>
+
+    <string name="click_reload">点击按钮重试</string>
+
+</resources>
