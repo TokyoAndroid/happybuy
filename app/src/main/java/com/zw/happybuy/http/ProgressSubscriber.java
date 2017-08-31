@@ -41,6 +41,7 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Pro
         } else if(e instanceof ApiException){
             onFailed(e.getMessage());
         } else {
+            Logger.e(e,e.getMessage());
             onFailed(ApiException.UNKNOWN_ERROR);
         }
     }

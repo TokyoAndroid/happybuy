@@ -3,6 +3,7 @@ package com.zw.happybuy.ui.adapter;
 import android.graphics.Paint;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,5 +35,6 @@ public class HomeGoodsAdapter extends BaseQuickAdapter<GoodsBean.GoodlistBean,Ba
         ImageUtils.loadImageWithPlaceHolder(mContext,(ImageView) holder.getView(R.id.iv_goods),item.getImages().get(0).getImage());
         //设置删除线
         ((TextView)holder.getView(R.id.tv_orl_price)).getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+        ((ImageView)holder.getView(R.id.iv_yuyue)).setVisibility(item.getIs_appointment() == 1 ? View.VISIBLE : View.INVISIBLE);
     }
 }

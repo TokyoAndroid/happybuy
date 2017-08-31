@@ -15,13 +15,17 @@ public interface HomeContract {
     public interface Presenter extends BasePresenter{
         void loadGoods();
 
+        void loadMore();
 
+        void refreshData();
     }
 
     public interface View extends BaseView<Presenter>{
         void showLoadDataError(String message);
 
         void refreshRecyclerView(List<GoodsBean.GoodlistBean> goodlistBeen);
+
+        void afterLoadMore(boolean isSuccess);
     }
 
 }

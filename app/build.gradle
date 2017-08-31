@@ -5,6 +5,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "26.0.0"
     defaultConfig {
+        multiDexEnabled true
         applicationId "com.zw.happybuy"
         minSdkVersion 16
         targetSdkVersion 25
@@ -60,4 +61,14 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
     //BaseRecyclerViewAdapterHelper
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
+    //RxBinding
+    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-support-v4:0.4.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.4.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-design:0.4.0'
+    //Bugly 异常上报  需要避免混淆
+    compile 'com.tencent.bugly:crashreport:2.6.5'
+    //LeakCanary
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.2'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.2'
 }

@@ -10,7 +10,7 @@ import com.orhanobut.logger.Logger;
 
 public class LogUtils {
 
-    private static boolean isDebug = true;
+    public static boolean isDebug = true;
 
     private LogUtils(){}
 

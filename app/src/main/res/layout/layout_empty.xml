@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:gravity="center_horizontal">
 
     <ImageView
@@ -16,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:textColor="@color/gray"
+        android:textColor="@color/white"
         android:gravity="center"
         android:text="出错了.."/>
 

@@ -12,7 +12,11 @@ import com.zw.happybuy.http.ProgressSubscriber;
 import com.zw.happybuy.utils.SnackBarUtils;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.functions.Func1;
 
 /**
@@ -60,6 +64,22 @@ public class HomePresenter implements HomeContract.Presenter {
                     }
                 });
 
+
+    }
+
+    @Override
+    public void loadMore() {
+        Observable.timer(2, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
+                .subscribe(new Action1<Long>() {
+                    @Override
+                    public void call(Long aLong) {
+                        view.afterLoadMore(false);
+                    }
+                });
+    }
+
+    @Override
+    public void refreshData() {
 
     }
 }

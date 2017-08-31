@@ -3,20 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="5dp"
     app:cardElevation="3dp"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_margin="5dp"
-            android:scaleType="centerCrop"
-            android:id="@+id/iv_goods"
-            android:src="@mipmap/ceshi"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop"
+                android:id="@+id/iv_goods"
+                android:src="@mipmap/ceshi"/>
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/iv_yuyue"
+                android:src="@mipmap/appointment_img"/>
+        </RelativeLayout>
+        
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,11 +35,12 @@
             android:orientation="vertical">
             <TextView
                 android:id="@+id/tv_goods_title"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:maxLines="1"
+                android:ellipsize="end"
                 android:textColor="@color/colorPrimary"
                 android:text="小龙哥冒菜"/>
             <TextView
@@ -82,7 +93,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:paddingBottom="5dp"
+                    android:paddingBottom="8dp"
                     android:textSize="12sp"
                     android:textColor="@color/light_gray"
                     android:text="已售9份"

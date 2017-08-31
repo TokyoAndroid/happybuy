@@ -10,15 +10,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.jakewharton.rxbinding.view.RxView;
 import com.zw.happybuy.R;
 import com.zw.happybuy.common.AppManager;
 import com.zw.happybuy.ui.MainActivity;
 import com.zw.happybuy.ui.adapter.GuidePagerAdapter;
 import com.zw.happybuy.ui.base.BaseActivity;
 import com.zw.happybuy.utils.DensityUtils;
+import com.zw.happybuy.utils.rxbus.RxBindingUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import rx.functions.Action1;
 
 public class GuideActivity extends BaseActivity {
 
@@ -44,6 +47,14 @@ public class GuideActivity extends BaseActivity {
     @Override
     public void afterCreated(@Nullable Bundle savedInstanceState) {
         btn.setVisibility(View.GONE);
+        RxBindingUtils.click(btn, new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                Intent intent = new Intent(GuideActivity.this, MainActivity.class);
+                startActivity(intent);
+                GuideActivity.this.finish();
+            }
+        });
         initViewPager();
         addCircles();
     }
@@ -99,8 +110,6 @@ public class GuideActivity extends BaseActivity {
 
     @OnClick(R.id.btn)
     public void onViewClicked() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        this.finish();
+
     }
 }
