@@ -1,10 +1,12 @@
 package com.zw.happybuy.ui;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
@@ -15,9 +17,19 @@ import android.widget.TextView;
 
 import com.zw.happybuy.R;
 import com.zw.happybuy.ui.base.BaseActivity;
+import com.zw.happybuy.ui.base.RxLifeTransformer;
 import com.zw.happybuy.ui.fragment.HomeFragment;
+import com.zw.happybuy.ui.fragment.MeFragment;
+import com.zw.happybuy.ui.fragment.RoundFragment;
+import com.zw.happybuy.utils.NetworkUtils;
+import com.zw.happybuy.utils.ToastUtils;
+
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 
 public class MainActivity extends BaseActivity {
 
@@ -29,8 +41,10 @@ public class MainActivity extends BaseActivity {
 
     private String[] tabTitles;
 
-    private Class[] fragments = new Class[]{HomeFragment.class,HomeFragment.class,
-                                            HomeFragment.class,HomeFragment.class};
+    private Class[] fragments = new Class[]{HomeFragment.class,RoundFragment.class,
+                                            MeFragment.class,HomeFragment.class};
+
+    private AlertDialog downloadDialog;
 
     @Override
     public int getLayoutRes() {
@@ -48,6 +62,8 @@ public class MainActivity extends BaseActivity {
 
         initTabWidget();
 
+        checkAppVersionUpdate();
+
     }
 
     private void initTabWidget(){
@@ -63,6 +79,50 @@ public class MainActivity extends BaseActivity {
             tabHost.addTab(tabHost.newTabSpec("" + i).setIndicator(view),fragments[i],null);
         }
         tabHost.setCurrentTab(0);
+    }
+
+    private void checkAppVersionUpdate(){
+        if(NetworkUtils.isWifiConnected(this)){
+            Observable.timer(3, TimeUnit.SECONDS)
+                    .compose(new RxLifeTransformer<Long,Long>(this))
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Action1<Long>() {
+                        @Override
+                        public void call(Long aLong) {
+                            showIsUpdateDialog();
+                        }
+                    });
+        } else {
+
+        }
+    }
+
+    private void showIsUpdateDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.isUpdateApp_message);
+        builder.setTitle(R.string.isUpdateApp_title);
+        builder.setIcon(R.mipmap.update_app);
+        builder.setPositiveButton(R.string.sure, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                downloadApp();
+                ToastUtils.showShort("后台下载新版本中!");
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        downloadDialog = builder.create();
+        downloadDialog.setCanceledOnTouchOutside(false);
+        downloadDialog.show();
+    }
+
+    private void downloadApp(){
+        //TODO 下载APP
     }
 
 }

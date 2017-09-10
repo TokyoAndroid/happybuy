@@ -44,32 +44,38 @@ public class SnackBarUtils {
                 .show();
     }
 
-    public static void showWithButtonAlways(View view, String text, String actionText, int snackBarHeight,View.OnClickListener listener){
+    public static void showWithButtonAlwaysWithHeight(View view, String text, String actionText, View.OnClickListener listener){
         Snackbar snackbar = Snackbar.make(view,text,Snackbar.LENGTH_INDEFINITE)
                 .setAction(actionText,listener)
                 .setActionTextColor(ContextCompat.getColor(App.getAppContext(), R.color.colorPrimary));
         setMessageColor(snackbar);
-        setHeight(snackbar,snackBarHeight).show();
+        setHeight(snackbar,view).show();
     }
 
-    public static void showWithoutButtonLong(View view, String text, int snackBarHeight){
+    public static void showWithoutButtonLongWithHeight(View view, String text){
         Snackbar snackbar = Snackbar.make(view,text,Snackbar.LENGTH_LONG);
         setMessageColor(snackbar);
-        setHeight(snackbar,snackBarHeight).show();
+        setHeight(snackbar,view).show();
     }
 
-    public static Snackbar setMessageColor(Snackbar snackbar){
+    public static void showWithoutButtonShortWithHeight(View view, String text){
+        Snackbar snackbar = Snackbar.make(view,text,Snackbar.LENGTH_SHORT);
+        setMessageColor(snackbar);
+        setHeight(snackbar,view).show();
+    }
+
+    private static Snackbar setMessageColor(Snackbar snackbar){
         View view = snackbar.getView();
         TextView tv = (TextView) view.findViewById(R.id.snackbar_text);
         tv.setTextColor(ContextCompat.getColor(tv.getContext(),R.color.colorPrimary));
         return snackbar;
     }
 
-    public static Snackbar setHeight(Snackbar snackbar,int height){
+    private static Snackbar setHeight(Snackbar snackbar,View heightView){
         View view = snackbar.getView();
         ViewGroup.LayoutParams params = snackbar.getView().getLayoutParams();
         if(params != null){
-            params.height = height;
+            params.height = heightView.getHeight();
             snackbar.getView().setLayoutParams(params);
         }
         return snackbar;

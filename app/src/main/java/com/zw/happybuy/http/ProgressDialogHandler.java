@@ -9,6 +9,8 @@ import android.os.Message;
 
 import com.zw.happybuy.R;
 
+import java.lang.ref.WeakReference;
+
 /**
  * Created by Administrator on 2017/8/25.
  */
@@ -23,19 +25,19 @@ public class ProgressDialogHandler extends Handler {
     }
 
     private ProgressDialog mDialog;
-    private Context mContext;
-    private OnProgressDialogCannelListener mListener;
+    private static WeakReference<Context> mContext;
+    private WeakReference<OnProgressDialogCannelListener> mListener;
     private boolean canCannel;
 
     public ProgressDialogHandler(Context context,OnProgressDialogCannelListener listener,boolean canCannel){
-        this.mContext = context;
-        this.mListener = listener;
+        this.mContext = new WeakReference<Context>(context);
+        this.mListener = new WeakReference<OnProgressDialogCannelListener>(listener);
         this.canCannel = canCannel;
     }
 
     private void initProgressDialog(){
         if(mDialog == null){
-            mDialog = new ProgressDialog(mContext);
+            mDialog = new ProgressDialog(mContext.get());
             mDialog.setCanceledOnTouchOutside(false);
             mDialog.setMessage("加载中 ...");
             mDialog.setCancelable(canCannel);
@@ -43,7 +45,7 @@ public class ProgressDialogHandler extends Handler {
                 mDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialog) {
-                        mListener.onCannelProgress();
+                        mListener.get().onCannelProgress();
                     }
                 });
             }
@@ -57,6 +59,7 @@ public class ProgressDialogHandler extends Handler {
         if(mDialog != null){
             mDialog.dismiss();
             mDialog = null;
+            this.removeCallbacksAndMessages(null);
         }
     }
 

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/dark_white"
     android:gravity="center_horizontal">
 
     <ImageView
@@ -13,13 +13,13 @@
         android:src="@mipmap/empty"/>
 
     <TextView
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textColor="@color/colorPrimary"
         android:gravity="center"
-        android:text="出错了.."/>
+        android:text="没有数据,刷新试试 .."/>
 
 
 

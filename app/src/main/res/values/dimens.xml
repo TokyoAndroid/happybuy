@@ -3,4 +3,13 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="horizontal_divider_height">1dp</dimen>
+
+    <dimen name="cardview_margin">0dp</dimen>
+
+    <dimen name="padding_top">0dp</dimen>
+
+    <dimen name="me_item_height">60dp</dimen>
+    <dimen name="me_item_icon">20dp</dimen>
+    <dimen name="me_item_text">15sp</dimen>
+    <dimen name="me_item_text_count">18dp</dimen>
 </resources>

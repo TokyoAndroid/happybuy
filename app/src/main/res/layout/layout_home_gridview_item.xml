@@ -6,8 +6,8 @@
 
     <ImageView
         android:layout_marginTop="5dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:id="@+id/iv"
         android:scaleType="centerCrop"
         android:src="@mipmap/ceshi"/>
@@ -19,6 +19,6 @@
         android:text="美食"
         android:textColor="@color/gray"
         android:id="@+id/tv"
-        android:textSize="12sp"/>
+        android:textSize="10sp"/>
 
 </LinearLayout>

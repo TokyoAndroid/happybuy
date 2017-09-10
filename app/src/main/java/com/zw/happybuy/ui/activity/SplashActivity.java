@@ -1,6 +1,7 @@
 package com.zw.happybuy.ui.activity;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -10,13 +11,17 @@ import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.widget.RelativeLayout;
 
+import com.baidu.location.BDAbstractLocationListener;
+import com.baidu.location.LocationClient;
 import com.orhanobut.logger.Logger;
 import com.zw.happybuy.R;
 import com.zw.happybuy.common.AppManager;
 import com.zw.happybuy.contract.SplashContract;
 import com.zw.happybuy.contract.presenter.SplashPresenter;
+import com.zw.happybuy.listener.MyLocationListener;
 import com.zw.happybuy.ui.base.BaseActivity;
 import com.zw.happybuy.utils.LogUtils;
+import com.zw.happybuy.utils.StatusViewUtils;
 import com.zw.happybuy.utils.ToastUtils;
 
 import butterknife.BindView;
@@ -33,9 +38,6 @@ public class SplashActivity extends BaseActivity implements SplashContract.Splas
 
     private SplashContract.SplashPresenter presenter;
 
-
-    private AlertDialog dialog;
-
     @Override
     public int getLayoutRes() {
         return R.layout.activity_splash;
@@ -44,46 +46,13 @@ public class SplashActivity extends BaseActivity implements SplashContract.Splas
     @Override
     public void initPresenter() {
         presenter = new SplashPresenter(this, this);
-
-        presenter.checkAppVersion();
     }
 
     @Override
     public void afterCreated(@Nullable Bundle savedInstanceState) {
         startAnimation();
-    }
-
-    @Override
-    public void showIsUpdateDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(R.string.isUpdateApp_message);
-        builder.setTitle(R.string.isUpdateApp_title);
-        builder.setIcon(R.mipmap.update_app);
-        builder.setPositiveButton(R.string.sure, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                presenter.downloadApp();
-                presenter.goToActivity();
-                ToastUtils.showShort("后台下载新版本中!");
-            }
-        });
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                presenter.goToActivity();
-            }
-        });
-        dialog = builder.create();
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                onBackPressed();
-            }
-        });
-        dialog.show();
+        presenter.startLocation();
+        presenter.goToActivity();
     }
 
     @Override

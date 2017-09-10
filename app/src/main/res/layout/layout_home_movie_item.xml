@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_margin="5dp"
+        android:layout_width="80dp"
+        android:src="@mipmap/ceshi"
+        android:id="@+id/iv_movie"
+        android:scaleType="centerCrop"
+        android:layout_height="100dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_movie_name"
+        android:textColor="@color/black1"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:lines="1"
+        android:ellipsize="end"
+        android:text="陆垚知马俐"/>
+    <TextView
+        android:layout_marginTop="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_movie_fenshu"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center"
+        android:textSize="11sp"
+        android:lines="1"
+        android:ellipsize="end"
+        android:text="6.0分"/>
+
+</LinearLayout>

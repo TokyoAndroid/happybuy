@@ -55,4 +55,24 @@
         <item>@mipmap/icon_home_999</item>
         <item>@mipmap/icon_home_all_0</item>
     </array>
+
+    <array name="round_subject">
+        <item>全部</item>
+        <item>粮油</item>
+        <item>衣服</item>
+        <item>图书</item>
+        <item>电子产品</item>
+        <item>酒水饮料</item>
+        <item>水果</item>
+    </array>
+    <array name="round_rank">
+        <item>综合排序</item>
+        <item>配送费最低</item>
+    </array>
+    <array name="round_huodong">
+        <item>优惠活动</item>
+        <item>特价活动</item>
+        <item>免配送费</item>
+        <item>可在线支付</item>
+    </array>
 </resources>

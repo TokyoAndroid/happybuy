@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.squareup.leakcanary.RefWatcher;
 import com.trello.rxlifecycle.components.support.RxFragment;
+import com.zw.happybuy.common.App;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -16,7 +18,7 @@ import butterknife.Unbinder;
  * Created by Tok on 2017/8/21.
  */
 
-public abstract class BaseFragment extends RxFragment {
+public abstract class BaseFragment extends RxFragment{
 
     private View rootView;
     private Unbinder unbinder;
@@ -46,6 +48,7 @@ public abstract class BaseFragment extends RxFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if(isFirstCreate){
+            initPresenter();
             afterCreated(savedInstanceState);
             isFirstCreate = false;
         }
@@ -58,6 +61,15 @@ public abstract class BaseFragment extends RxFragment {
         unbinder.unbind();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RefWatcher watcher = App.getRefWatcher(getActivity());
+        watcher.watch(this);
+    }
+
     public abstract int getLayoutRes();
+    public abstract void initPresenter();
     public abstract void afterCreated(Bundle savedInstanceState);
+
 }

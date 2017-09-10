@@ -14,6 +14,9 @@ import android.widget.TextView;
 import com.zw.happybuy.R;
 import com.zw.happybuy.utils.LogUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Tok on 2017/8/27.
  */
@@ -26,10 +29,8 @@ public class GuidePagerAdapter extends PagerAdapter{
             R.mipmap.guide_shopping,R.mipmap.guide_ktv,
             R.mipmap.guide_travel,R.mipmap.guide_beauty
     };
-    private int[] bgColors = new int[]{
-            R.color.indigo,R.color.punk,
-            R.color.yellow,R.color.lightBlue
-    };
+    private int[] bgColors;
+
     private int[] tvColors = new int[]{
             R.color.colorPrimary,R.color.blue,
             R.color.black1,R.color.zise
@@ -40,8 +41,9 @@ public class GuidePagerAdapter extends PagerAdapter{
     private Context context;
     private LayoutInflater inflate;
 
-    public GuidePagerAdapter(Context context){
+    public GuidePagerAdapter(Context context,int[] bgColors){
         this.context = context;
+        this.bgColors = bgColors;
         subject = context.getResources().getStringArray(R.array.guide_subject);
         inflate = LayoutInflater.from(context);
         for (int i = 0; i < 8; i++) {
@@ -84,4 +86,5 @@ public class GuidePagerAdapter extends PagerAdapter{
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView(views[position]);
     }
+
 }

@@ -11,7 +11,6 @@ public interface SplashContract {
 
     public interface SplashView extends BaseView<SplashPresenter>{
 
-        void showIsUpdateDialog();
 
         void startAnimation();
 
@@ -20,13 +19,12 @@ public interface SplashContract {
 
     public interface SplashPresenter extends BasePresenter{
 
-        void checkAppVersion();
 
         void goToActivity();
 
-        void downloadApp();
+        void startLocation();
 
-        void installApp();
+        void stopLocation();
 
     }
 
